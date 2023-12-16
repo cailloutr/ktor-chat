@@ -4,6 +4,7 @@ val kotlin_version: String by project
 val logback_version: String by project
 val kmongo_version: String by project
 val koin_version: String by project
+val mockk_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.21"
@@ -37,12 +38,22 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
-    // KMongo
+    //KMongo
     implementation("org.litote.kmongo:kmongo:$kmongo_version")
     implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
 
-    // Koin core feature
+    //Koin core feature
     implementation("io.insert-koin:koin-core:$koin_version")
     implementation("io.insert-koin:koin-ktor:$koin_version")
     implementation("io.insert-koin:koin-logger-slf4j:$koin_version")
+
+    //JUnit5
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+
+    //Mockk
+    testImplementation("io.mockk:mockk:${mockk_version}")
+
+    //AssertK
+    testImplementation("com.willowtreeapps.assertk:assertk:0.26.1")
 }
